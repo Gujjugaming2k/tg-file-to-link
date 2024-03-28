@@ -251,7 +251,7 @@ bot.command("torrent", async (ctx) => {
                 }
             } else {
                 let link = `${process.env.host}/${torrent.files[0].name}`;
-                await ctx.reply(`Name: ${file.name}\nSize:${Math.floor(file.length / (1024 * 1024))}mb\n\nLink: ${convertToValidUrl(link)}`, {
+                await ctx.reply(`Name: ${torrent.files[0].name}\nSize:${Math.floor(torrent.files[0].length / (1024 * 1024))}mb\n\nLink: ${convertToValidUrl(link)}`, {
                     reply_parameters: {
                         message_id: ctx.message.message_id
                     }
