@@ -232,7 +232,7 @@ bot.command("torrent", async (ctx) => {
                 dlMsgTxt = newDlMsgTxt;
 
                 try {
-                    await ctx.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, newDlMsgTxt);
+                    ctx.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, newDlMsgTxt);
                 } catch (error) {
                     console.log(error)
                 }
@@ -250,7 +250,7 @@ bot.command("torrent", async (ctx) => {
                     })
                 }
             } else {
-                let link = `${process.env.host}/${file.name}`;
+                let link = `${process.env.host}/${torrent.files[0].name}`;
                 await ctx.reply(`Name: ${file.name}\nSize:${Math.floor(file.length / (1024 * 1024))}mb\n\nLink: ${convertToValidUrl(link)}`, {
                     reply_parameters: {
                         message_id: ctx.message.message_id
