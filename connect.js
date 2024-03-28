@@ -16,7 +16,7 @@ export default async function connect() {
         connectionRetries: 5
     });
 
-    if (stringSession) {
+    if (session) {
         console.log("connecting");
         await client.connect();
         console.log("Connected")

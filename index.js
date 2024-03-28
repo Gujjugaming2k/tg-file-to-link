@@ -11,8 +11,9 @@ import express from "express";
 
 const app = express();
 
+app.use(await bot.createWebhook({ domain: process.env.webhookDomain }));
+
 app.use(express.static("./downloads"));
-app.use(express.static("./downloads/Sand Land - The Series - S01E01-07 - 1080p WEB H.264 -NanDesuKa (DSNP)"));
 
 app.get("/", (req, res) => {
     res.send("Bot started");
@@ -280,8 +281,6 @@ bot.command('seed', () => {
 })
 
 bot.launch();
-
-console.log("Launch")
 
 app.listen(3000, () => {
     console.log("Ready")
