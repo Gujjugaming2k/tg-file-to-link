@@ -12,7 +12,9 @@ import express from "express";
 dotenv.config()
 
 const app = express();
-const bot = new Telegraf(process.env?.token);
+const bot = new Telegraf(process.env?.token, {
+    handlerTimeout: 600000
+});
 
 app.use(await bot.createWebhook({ domain: process.env.webhookDomain }));
 app.use(express.static("./downloads"));
@@ -78,7 +80,6 @@ bot.on(message("video"), async (ctx) => {
         await client.downloadMedia(vid[0], {
             progressCallback: async (downloaded, total) => {
                 if (isUpdate(referenceDate, new Date())) {
-                    console.log("Update")
                     const newDlMsgTxt = `Downloading...\n\nProgression ${(downloaded / total * 100).toPrecision(2)} %\nDownloaded: ${(downloaded / (1024 * 1024)).toPrecision(2)}MB\nTotal: ${(total / (1024 * 1024)).toPrecision(2)}MB`;
 
                     if (dlMsgTxt === newDlMsgTxt) {
@@ -99,8 +100,6 @@ bot.on(message("video"), async (ctx) => {
         console.log(e)
         ctx.reply("Something went wrong. Retry later")
     }
-
-    console.log(a)
 });
 
 bot.command("link", async (ctx) => {
@@ -109,7 +108,6 @@ bot.command("link", async (ctx) => {
     if (!fs.existsSync("./downloads")) {
         await fsPromises.mkdir("./downloads");
     }
-    console.log(URL)
 
     // if (!URL.startsWith("https") || !URL.startsWith("http")) {
     //     ctx.reply("Please enter a valid url", {
