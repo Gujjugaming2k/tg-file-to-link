@@ -279,8 +279,6 @@ bot.command('seed', () => {
 
 })
 
-bot.launch();
-
 app.listen(3000, () => {
     console.log("Ready")
 })
