@@ -9,20 +9,17 @@ import { DownloaderHelper } from "node-downloader-helper";
 import WebTorrent from 'webtorrent';
 import express from "express";
 
+dotenv.config()
+
 const app = express();
+const bot = new Telegraf(process.env?.token);
 
 app.use(await bot.createWebhook({ domain: process.env.webhookDomain }));
-
 app.use(express.static("./downloads"));
 
 app.get("/", (req, res) => {
     res.send("Bot started");
 });
-
-
-dotenv.config()
-
-const bot = new Telegraf(process.env?.token);
 
 function isUpdate(d1, d2) {
     let diff = Math.abs(d2.getTime() - d1.getTime()); // get the absolute difference in milliseconds
