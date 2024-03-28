@@ -175,11 +175,11 @@ bot.command("link", async (ctx) => {
 bot.command("torrent", async (ctx) => {
     let magnetURI = ctx.message.text.slice(9).trim();
 
-    if (ctx.message.reply_to_message.text) {
+    if (ctx.message?.reply_to_message?.text) {
         magnetURI = ctx.message.reply_to_message.text;
     }
 
-    if (ctx.message.reply_to_message.document && path.extname(ctx.message.reply_to_message.document.file_name) === ".torrent") {
+    if (ctx.message?.reply_to_message?.document && path.extname(ctx.message.reply_to_message.document.file_name) === ".torrent") {
         const fileLink = await ctx.telegram.getFileLink(ctx.message.reply_to_message.document.file_id);
 
         try {
@@ -221,7 +221,6 @@ bot.command("torrent", async (ctx) => {
         torrent.on('download', async (bytes) => {
 
             if (isUpdate(referenceDate, new Date())) {
-                const timeRemaining = new Date()
                 const newDlMsgTxt = `Downloading...\n\nTorrent Name: ${torrent.name}\nTorrent Size: ${Math.floor(torrent.length / (1024 * 1024))}mb\n\nProgression ${(torrent.progress * 100).toPrecision(2)}%\nDownloaded: ${(torrent.downloaded / (1024 * 1024)).toPrecision(2)}mb\nSpeed: ${(torrent.downloadSpeed / (1024 * 1024)).toPrecision(2)}mb/s`;
 
                 if (dlMsgTxt.trim() === newDlMsgTxt.trim()) {
@@ -231,7 +230,12 @@ bot.command("torrent", async (ctx) => {
                 };
 
                 dlMsgTxt = newDlMsgTxt;
-                await ctx.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, newDlMsgTxt);
+
+                try {
+                    await ctx.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, newDlMsgTxt);
+                } catch (error) {
+                    console.log(error)
+                }
             }
         })
 
