@@ -1,0 +1,21 @@
+{
+  "name": "file-to-link-bot",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-downloader-helper": "^2.1.9",
+    "telegraf": "^4.16.3",
+    "telegram": "^2.20.2",
+    "webtorrent": "^2.2.1"
+  }
+}
