@@ -13,7 +13,7 @@ const token = process.env.token;
 
 export default async function connect() {
     const client = new TelegramClient(stringSession, apiId, apiHash, {
-        connectionRetries: 5
+        connectionRetries: 5,
     });
 
     if (session) {

@@ -11,12 +11,15 @@ import express from "express";
 
 dotenv.config()
 
-const app = express();
 const bot = new Telegraf(process.env?.token, {
-    handlerTimeout: 600000
+    handlerTimeout: 600000,
+    telegram: {
+        webhookReply: false
+    }
 });
+const app = express();
 
-app.use(await bot.createWebhook({ domain: process.env.webhookDomain }));
+app.use(await bot.createWebhook({ domain: process.env.webhookDomain, drop_pending_updates: true }));
 app.use(express.static("./downloads"));
 
 app.get("/", (req, res) => {
@@ -52,8 +55,6 @@ bot.start(ctx => {
 });
 
 bot.on(message("video"), async (ctx) => {
-    await ctx.react("👍", true);
-
     if (!fs.existsSync("./downloads")) {
         await fsPromises.mkdir("./downloads");
     }
@@ -280,6 +281,6 @@ bot.command('seed', () => {
 
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Ready")
 })
