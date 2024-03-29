@@ -52,7 +52,7 @@ bot.start(ctx => {
 });
 
 bot.on(message("video"), async (ctx) => {
-    const a = await ctx.react("👍", true);
+    await ctx.react("👍", true);
 
     if (!fs.existsSync("./downloads")) {
         await fsPromises.mkdir("./downloads");
@@ -95,6 +95,7 @@ bot.on(message("video"), async (ctx) => {
             outputFile: `./downloads/${filename}`,
         });
 
+        client.disconnect();
         await ctx.telegram.editMessageText(ctx.chat.id, msg.message_id, undefined, `Video is available at ${process.env.host}/${filename}`);
     } catch (e) {
         console.log(e)
