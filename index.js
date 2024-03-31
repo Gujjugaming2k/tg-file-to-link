@@ -12,14 +12,11 @@ import express from "express";
 dotenv.config()
 
 const bot = new Telegraf(process.env?.token, {
-    handlerTimeout: 600000,
-    telegram: {
-        webhookReply: false
-    }
+    handlerTimeout: 600000
 });
 const app = express();
 
-app.use(await bot.createWebhook({ domain: process.env.webhookDomain, drop_pending_updates: true }));
+app.use(await bot.createWebhook({ domain: process.env.webhookDomain }));
 app.use(express.static("./downloads"));
 
 app.get("/", (req, res) => {
