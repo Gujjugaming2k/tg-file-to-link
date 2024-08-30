@@ -3,7 +3,6 @@
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",NAME="Hindi",DEFAULT=YES,AUTOSELECT=YES,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/5/5.m3u8"
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="und",NAME="Unknown",DEFAULT=NO,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/0/0.m3u8"
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="spa",NAME="Spanish",DEFAULT=NO,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/1/1.m3u8"
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="hin",NAME="Hindi",DEFAULT=NO,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/2/2.m3u8"
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="pol",NAME="Polish",DEFAULT=NO,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/3/3.m3u8"
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="por",NAME="Portuguese",DEFAULT=NO,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/4/4.m3u8"
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="tam",NAME="Tamil",DEFAULT=NO,URI="https://netflix.vflix.xyz/audio_proxy?url=https://s01.nfmirrorcdn.top/files/81307999/a/5/5.m3u8"
